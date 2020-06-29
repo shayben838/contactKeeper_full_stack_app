@@ -35,6 +35,7 @@ const ContactState = (props) => {
       const res = await fetcher.get("/contacts", config);
       dispatch({ type: GET_CONTACTS, payload: res.data.contacts });
     } catch (err) {
+      console.log(err.response);
       dispatch({ type: CONTACT_ERROR, payload: err.response.msg });
     }
   };
