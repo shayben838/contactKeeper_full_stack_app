@@ -19,6 +19,7 @@ import fetcher from "../../api/fetcher";
 const ContactState = (props) => {
   const initialState = {
     contacts: null,
+    numOfContacts: null,
     current: null,
     filterd: null,
     error: null,
@@ -35,10 +36,10 @@ const ContactState = (props) => {
       const res = await fetcher.get("/contacts", config);
       dispatch({ type: GET_CONTACTS, payload: res.data.contacts });
     } catch (err) {
-      console.log(err.response);
       dispatch({ type: CONTACT_ERROR, payload: err.response.msg });
     }
   };
+
   // Add contact
   const addContact = async (contact) => {
     const config = {
@@ -111,6 +112,7 @@ const ContactState = (props) => {
     <contactContext.Provider
       value={{
         contacts: state.contacts,
+        numOfContacts: state.numOfContacts,
         current: state.current,
         filterd: state.filterd,
         error: state.error,

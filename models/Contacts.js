@@ -13,13 +13,38 @@ const ContactSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  phone: {
+  link: {
     type: String,
   },
   type: {
     type: String,
     default: "personal",
   },
+  position: {
+    type: String,
+  },
+  firstInterview: {
+    type: String,
+  },
+  secondInterview: {
+    type: String,
+  },
+  comments: {
+    type: String,
+  },
+  conservationPoint_1: {
+    type: String,
+  },
+  conservationPoint_2: {
+    type: String,
+  },
+  pointToImprove_1: {
+    type: String,
+  },
+  pointToImprove_2: {
+    type: String,
+  },
+
   date: {
     type: Date,
     default: Date.now,

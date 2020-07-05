@@ -16,7 +16,7 @@
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Monospace", Monospace;
   font-size: 1rem;
   line-height: 1.6;
   background-color: #fff;
@@ -92,6 +92,7 @@ img {
 
 /* Cards */
 .card {
+  position: relative;
   padding: 1rem;
   border: #ccc 1px dotted;
   margin: 0.7rem 0;
@@ -105,7 +106,13 @@ img {
 .list li {
   padding-bottom: 0.3rem;
 }
-
+/* Positions */
+.p-abs {
+  position: absolute;
+}
+.p-rel {
+  position: relative;
+}
 /* Padding */
 .p {
   padding: 0.5rem;
@@ -295,7 +302,8 @@ img {
 
 /* Forms */
 input {
-  margin: 1.2rem 0;
+  margin: 1rem 0;
+  font-family: "Monospace", Monospace;
 }
 
 .form-text {
@@ -312,8 +320,8 @@ select,
 textarea {
   display: block;
   width: 100%;
-  padding: 0.4rem;
-  font-size: 1.2rem;
+  padding: 0.3rem;
+  font-size: 1.1rem;
   border: 1px solid #ccc;
 }
 
@@ -439,4 +447,84 @@ table th {
     text-align: center;
     justify-content: center;
   }
+}
+.fa-product-hunt,
+.fa-envelope-open,
+.fa-times,
+.fa-check {
+  width: 10px;
+}
+.fa-check {
+  color: var(--success-color);
+}
+.fa-times {
+  color: var(--danger-color);
+}
+
+.contact_item_text {
+  font-size: 14px;
+  margin-left: 10px;
+}
+.times_form {
+  font-size: 15px;
+  margin-left: 10px;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+.times_form:hover {
+  font-size: 20px;
+}
+.danger {
+  color: var(--danger-color);
+}
+.success {
+  color: var(--success-color);
+}
+.primary {
+  color: var(--primary-color);
+}
+
+.companyColor1 {
+  color: aliceblue;
+  text-shadow: none;
+}
+.companyColor2 {
+  transform: rotate(20deg); /* Standard syntax */
+  color: rgb(205, 213, 219);
+  text-shadow: rgb(37, 243, 82) 1px 15px 1px;
+  transition: all 0.6s;
+}
+.text_area {
+  resize: none;
+  overflow-y: hidden;
+}
+.fa-chevron-up,
+.fa-chevron-down {
+  padding-left: 5px;
+}
+.p_PreservationAndImprovement::before {
+  content: "* ";
+  font-weight: bold;
+  margin-left: 5px;
+}
+.p_PreservationAndImprovement_info {
+  margin-left: 5px;
+  margin-bottom: 10px;
+  /* background-color: rgba(255, 255, 255, 0.1); */
+  border-radius: 20px;
+
+  border-style: outset;
+  padding: 5px;
+}
+.p_PreservationAndImprovement_info::before {
+  content: "* ";
+  font-weight: bold;
+  margin-left: 5px;
+  color: rgba(231, 218, 218, 0.6);
+}
+.success_border {
+  border: 1px solid var(--success-color);
+}
+.danger_border {
+  border: 1px solid var(--danger-color);
 }

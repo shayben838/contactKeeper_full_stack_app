@@ -17,6 +17,7 @@ export default (state, action) => {
       return {
         ...state,
         contacts: action.payload,
+        numOfContacts: action.payload.length,
         loading: false,
       };
     case ADD_CONTACT:
@@ -29,6 +30,7 @@ export default (state, action) => {
       return {
         ...state,
         contacts: null,
+        numOfContacts: null,
         filterd: null,
         error: null,
         current: null,

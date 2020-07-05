@@ -42,6 +42,7 @@ const AuthState = (props) => {
         payload: res.data,
       });
     } catch (err) {
+      console.log("AUTH ERROR");
       dispatch({
         type: AUTH_ERROR,
       });

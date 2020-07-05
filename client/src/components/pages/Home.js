@@ -1,4 +1,6 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, Fragment } from "react";
+import { Link } from "react-router-dom";
+
 import Contacts from "../contacts/Contacts";
 import ContactForm from "../contacts/ContactForm";
 import ContactFilter from "../contacts/ContactFilter";
@@ -11,13 +13,18 @@ const Home = () => {
     // eslint-disable-next-line
   }, []);
   return (
-    <div className='grid-2'>
-      <ContactForm />
-      <div>
-        <ContactFilter />
-        <Contacts />
+    <Fragment>
+      <div className='grid-2' style={{ position: "relative" }}>
+        <ContactForm />
+        <div>
+          <ContactFilter />
+          <Contacts />
+        </div>
+        <Link to='/info'>
+          <i className='fas fa-info-circle info'></i>
+        </Link>
       </div>
-    </div>
+    </Fragment>
   );
 };
 export default Home;

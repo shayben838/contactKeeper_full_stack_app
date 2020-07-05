@@ -1,0 +1,30 @@
+.Info_component {
+  overflow: auto;
+  position: absolute;
+  background-color: rgba(1, 1, 1, 0.9);
+  color: white;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  padding-bottom: 200px;
+}
+.info {
+  font-size: 40px;
+  position: fixed;
+  bottom: 10px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.times_info {
+  font-size: 30px;
+  position: fixed;
+  top: 20px;
+  right: 40px;
+  color: white;
+  transition: all 1s;
+}
+.times_info:hover {
+  transform: rotate(20deg); /* Standard syntax */
+}

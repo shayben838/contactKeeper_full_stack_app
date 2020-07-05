@@ -30,15 +30,37 @@ router.post(
   [auth, [check("name", "Name is required ").not().isEmpty()]],
   async (req, res) => {
     const errors = validationResult(req);
+    console.log("###@@@", errors);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    const { name, email, phone, type } = req.body;
+    const {
+      name,
+      email,
+      position,
+      firstInterview,
+      secondInterview,
+      comments,
+      conservationPoint_1,
+      conservationPoint_2,
+      pointToImprove_1,
+      pointToImprove_2,
+      link,
+      type,
+    } = req.body;
     try {
       const Newcontact = new Contact({
         name,
         email,
-        phone,
+        position,
+        firstInterview,
+        secondInterview,
+        comments,
+        conservationPoint_1,
+        conservationPoint_2,
+        pointToImprove_1,
+        pointToImprove_2,
+        link,
         type,
         user: req.user.id,
       });
@@ -55,13 +77,43 @@ router.post(
 // @desc    update contact
 // @access  Private
 router.put("/:id", auth, async (req, res) => {
-  const { name, email, phone, type } = req.body;
+  const {
+    name,
+    email,
+    firstInterview,
+    secondInterview,
+    comments,
+    conservationPoint_1,
+    conservationPoint_2,
+    pointToImprove_1,
+    pointToImprove_2,
+    link,
+    type,
+  } = req.body;
   // Builde contact object
   const contactFields = {};
   if (name) contactFields.name = name;
   if (email) contactFields.email = email;
-  if (phone) contactFields.phone = phone;
+  if (link) contactFields.phone = phone;
   if (type) contactFields.type = type;
+  if (firstInterview) contactFields.firstInterview = firstInterview;
+  if (!firstInterview) contactFields.firstInterview = "";
+  if (secondInterview) contactFields.secondInterview = secondInterview;
+  if (!secondInterview) contactFields.secondInterview = "";
+  if (comments) contactFields.comments = comments;
+  if (!comments) contactFields.comments = "";
+  if (conservationPoint_1)
+    contactFields.conservationPoint_1 = conservationPoint_1;
+  if (!conservationPoint_1) contactFields.conservationPoint_1 = "";
+  if (conservationPoint_2)
+    contactFields.conservationPoint_2 = conservationPoint_2;
+  if (!conservationPoint_2) contactFields.conservationPoint_2 = "";
+  if (pointToImprove_1) contactFields.pointToImprove_1 = pointToImprove_1;
+  if (!pointToImprove_1) contactFields.pointToImprove_1 = "";
+
+  if (pointToImprove_2) contactFields.pointToImprove_2 = pointToImprove_2;
+  if (!pointToImprove_2) contactFields.pointToImprove_2 = "";
+
   try {
     let contact = await Contact.findById(req.params.id);
     if (!contact) return res.status(404).json({ msg: "Contact cannot find" });

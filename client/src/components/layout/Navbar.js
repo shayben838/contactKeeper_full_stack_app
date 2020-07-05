@@ -15,6 +15,9 @@ const Navbar = ({ title, icon }) => {
   };
   const authLinks = (
     <Fragment>
+      <li>
+        <Link to='/about'>About</Link>
+      </li>
       <li>Hello {user && user.user.name}</li>
       <li>
         <a onClick={onLogout} href='#!'>
@@ -27,6 +30,9 @@ const Navbar = ({ title, icon }) => {
   const guestLinks = (
     <Fragment>
       <li>
+        <Link to='/about'>About</Link>
+      </li>
+      <li>
         <Link to='/register'>Register</Link>
       </li>
       <li>
@@ -38,8 +44,10 @@ const Navbar = ({ title, icon }) => {
   return (
     <div className='navbar bg-primary'>
       <h1>
-        <i className={`${icon} p-1`} />
-        {title}
+        <Link to='/'>
+          <i className={`${icon} p-1`} />
+          {title}
+        </Link>
       </h1>
       <ul>{isAuthenticated ? authLinks : guestLinks}</ul>
     </div>
