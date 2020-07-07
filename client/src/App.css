@@ -2,7 +2,9 @@
 
 /* Global Styles */
 :root {
-  --primary-color: #003699;
+  /* --primary-color: #003699; */
+  --primary-color: #000427;
+
   --dark-color: #333333;
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
@@ -251,6 +253,7 @@ img {
 .badge-light,
 .alert-light {
   background: var(--light-color);
+  box-shadow: 0px 0px 10px 0px var(--primary-color);
   color: #333;
 }
 
@@ -407,7 +410,13 @@ table th {
   opacity: 0;
   transition: opacity 2000ms ease-in;
 }
-
+/* md-desktop */
+@media (min-width: 1000px) {
+  .forn-container {
+    margin-left: 300px;
+    margin-right: 300px;
+  }
+}
 /* Mobile Styles */
 @media (max-width: 700px) {
   .hide-sm {
@@ -451,6 +460,7 @@ table th {
 .fa-product-hunt,
 .fa-envelope-open,
 .fa-times,
+.fa-link,
 .fa-check {
   width: 10px;
 }
@@ -527,4 +537,18 @@ table th {
 }
 .danger_border {
   border: 1px solid var(--danger-color);
+}
+.main_icon {
+  transition: all 0.9s;
+}
+.main_icon:hover {
+  transform: rotate(360deg);
+}
+
+.company_item {
+  border: 1px solid var(--primary-color);
+  border-radius: 20px;
+  border-right: 2px solid var(--danger-color);
+  border-left: 2px solid var(--success-color);
+  margin: 5px;
 }

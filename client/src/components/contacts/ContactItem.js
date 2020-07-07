@@ -21,7 +21,7 @@ const ContactItem = ({ contact }) => {
     conservationPoint_2,
     pointToImprove_1,
     pointToImprove_2,
-    phone,
+    link,
     type,
     date,
   } = contact;
@@ -37,7 +37,10 @@ const ContactItem = ({ contact }) => {
   dateArr = dateArr.split("-");
   return (
     <div className='card bg-light'>
-      <h3 className='text-primary text-left'> {name} </h3>
+      <h3 className='text-primary text-left' style={{ marginTop: "10px" }}>
+        {" "}
+        {name}{" "}
+      </h3>
 
       <span
         style={{ float: "right" }}
@@ -53,7 +56,7 @@ const ContactItem = ({ contact }) => {
           fontSize: "14px",
           position: "absolute",
           top: "8px",
-          right: "15px",
+          right: "12px",
         }}
       >
         {dateArr[2]}
@@ -78,38 +81,33 @@ const ContactItem = ({ contact }) => {
         {firstInterview && (
           <li>
             <i className='fas fa-check '></i>
-            <span className='contact_item_text'>
-              {"Invited for first interview"}
-            </span>
+            <span className='contact_item_text'>{"first interview"}</span>
           </li>
         )}
         {secondInterview && (
           <li>
             <i className='fas fa-check'></i>
-            <span className='contact_item_text'>
-              {"Invited for second interview"}
-            </span>
+            <span className='contact_item_text'>{"second interview"}</span>
           </li>
         )}
         {!firstInterview && (
           <li>
             <i className='fas fa-times'></i>
-            <span className='contact_item_text'>
-              {"Invited for first interview"}
-            </span>
+            <span className='contact_item_text'>{"first interview"}</span>
           </li>
         )}
         {!secondInterview && (
           <li>
             <i className='fas fa-times'></i>
-            <span className='contact_item_text'>
-              {"Invited for second interview"}
-            </span>
+            <span className='contact_item_text'>{"second interview"}</span>
           </li>
         )}
-        {phone && (
+        {link && (
           <li>
-            <i className='fas fa-phone'>{("  ", phone)}</i>
+            <i className='fas fa-link'></i>
+            <a href={`${link}`} target='_blank' className='contact_item_text'>
+              Link
+            </a>
           </li>
         )}
       </ul>

@@ -15,13 +15,12 @@ import PrivateRoute from "./routing/PrivateRoute";
 import Info from "./components/pages/info/Info";
 //@ filter dosent work fine ,fix that one!
 //@AuthState line 59 dosent work with array of errors
-// @add statistic page about how much cv you send ect...
 // @protect info route
-// @תוסיף 3 נקודות לשימור 3 נקודות לשיפור
-// תוסיף טקסט חופשי שבו אפשר לספר על הראיון בצורה חופשית.
 // @Job Tracker
 // לקצר את כל הקומפוננטות מעל 100 שורות
 // להוציא פונקציות שמחשבות מחוץ לקומפוננטות
+// loading
+
 if (localStorage.token) {
   setAuthToken(localStorage.token);
 }

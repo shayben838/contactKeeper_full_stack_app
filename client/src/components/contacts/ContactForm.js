@@ -25,7 +25,7 @@ const ContactForm = () => {
       });
     }
   }, [contactContext, current]);
-
+  const [conclusion, setConclusion] = useState("");
   const [contact, setContact] = useState({
     name: "",
     email: "",
@@ -90,9 +90,21 @@ const ContactForm = () => {
   };
   return (
     <form id='contactForm' onSubmit={onSubmit}>
-      <h2 className='text-primary'>
-        {current ? "Edit Company" : "Add Company"}
-      </h2>
+      <h2 className='text-primary '>{current ? "Edit Memo" : "Add Memo"}</h2>
+      <input
+        type='text'
+        placeholder='Position'
+        name='position'
+        value={position}
+        onChange={onChange}
+      />
+      <input
+        type='text'
+        placeholder='Link '
+        name='link'
+        value={link}
+        onChange={onChange}
+      />
       <input
         type='text'
         placeholder='Company name'
@@ -107,90 +119,98 @@ const ContactForm = () => {
         name='email'
         value={email}
         onChange={onChange}
-        required
       />
-      <input
-        type='text'
-        placeholder='Position'
-        name='position'
-        value={position}
-        onChange={onChange}
-      />
-      <input
-        type='text'
-        placeholder='Link to the Publisher'
-        name='link'
-        value={link}
-        onChange={onChange}
-      />
-      <h5>Interviews</h5>
+      {/* START */}
       <div>
-        <input
-          style={{ margin: "0px" }}
-          type='checkbox'
-          name='firstInterview'
-          value={"invieted_for_first_intreview"}
-          checked={firstInterview === "invieted_for_first_intreview"}
-          onChange={onChange}
-        />
-        <span className='m'>invieted for first intreview</span>
-        <i
-          className='fas fa-times times_form'
-          onClick={() => clearSingleState("firstInterview")}
-        ></i>
+        <button
+          style={{ width: "100%" }}
+          type='button'
+          className='btn btn-white btn-sm '
+          onClick={() => {
+            conclusion ? setConclusion("") : setConclusion("show conclusion");
+          }}
+        >
+          Conclusion
+          {conclusion && <i className='fas fa-chevron-up'></i>}
+          {!conclusion && <i className='fas fa-chevron-down'></i>}
+        </button>
       </div>
-      <input
-        type='checkbox'
-        name='secondInterview'
-        value='invieted_for_second_intreview'
-        checked={secondInterview === "invieted_for_second_intreview"}
-        onChange={onChange}
-      />
-      <span className='m'>invieted for second interview</span>
-      <i
-        className='fas fa-times times_form'
-        onClick={() => clearSingleState("secondInterview")}
-      ></i>
-      {/* IMPROVMENT and preservation */}
-      <h5>2 Conservation Points</h5>
-      <input
-        type='text'
-        placeholder='#First-point '
-        name='conservationPoint_1'
-        value={conservationPoint_1}
-        onChange={onChange}
-      />
-      <input
-        type='text'
-        placeholder='#Second-point '
-        name='conservationPoint_2'
-        value={conservationPoint_2}
-        onChange={onChange}
-      />
-      <h5>2 Improvement points</h5>
-      <input
-        type='text'
-        placeholder='#First-point '
-        name='pointToImprove_1'
-        value={pointToImprove_1}
-        onChange={onChange}
-      />
-      <input
-        type='text'
-        placeholder='#Second-point '
-        name='pointToImprove_2'
-        value={pointToImprove_2}
-        onChange={onChange}
-      />
-      <h5>Comments</h5>
-      {/*Text AREA */}
-      <textarea
-        name='comments'
-        className='text_area'
-        placeholder='#'
-        onChange={onChange}
-        value={comments}
-      ></textarea>
+      {conclusion && (
+        <div>
+          <h5>Interviews</h5>
+          <div className='grid-2' style={{ gridGap: "0rem" }}>
+            <div>
+              <input
+                type='checkbox'
+                name='firstInterview'
+                value={"invieted_for_first_intreview"}
+                checked={firstInterview === "invieted_for_first_intreview"}
+                onChange={onChange}
+              />
+              <span className='m'>First intreview</span>
+              <i
+                className='fas fa-times times_form'
+                onClick={() => clearSingleState("firstInterview")}
+              ></i>
+            </div>
+            <div>
+              <input
+                type='checkbox'
+                name='secondInterview'
+                value='invieted_for_second_intreview'
+                checked={secondInterview === "invieted_for_second_intreview"}
+                onChange={onChange}
+              />
+              <span className='m'>Second interview</span>
+              <i
+                className='fas fa-times times_form'
+                onClick={() => clearSingleState("secondInterview")}
+              ></i>
+            </div>
+          </div>
+          {/* IMPROVMENT and preservation */}
+          <h5>2 Conservation Points</h5>
+          <input
+            type='text'
+            placeholder='#First-point '
+            name='conservationPoint_1'
+            value={conservationPoint_1}
+            onChange={onChange}
+          />
+          <input
+            type='text'
+            placeholder='#Second-point '
+            name='conservationPoint_2'
+            value={conservationPoint_2}
+            onChange={onChange}
+          />
+          <h5>2 Improvement points</h5>
+          <input
+            type='text'
+            placeholder='#First-point '
+            name='pointToImprove_1'
+            value={pointToImprove_1}
+            onChange={onChange}
+          />
+          <input
+            type='text'
+            placeholder='#Second-point '
+            name='pointToImprove_2'
+            value={pointToImprove_2}
+            onChange={onChange}
+          />
+          <h5>Comments</h5>
+          {/*Text AREA */}
+          <textarea
+            name='comments'
+            className='text_area'
+            placeholder='#'
+            onChange={onChange}
+            value={comments}
+          ></textarea>
+        </div>
+      )}
+      {/* END */}
       <h5>Contact Type</h5>
       <input
         type='radio'
@@ -211,7 +231,7 @@ const ContactForm = () => {
       <div>
         <input
           type='submit'
-          value={current ? "Update Contact" : "Add Contact"}
+          value={current ? "Update Memo " : "Add Memo "}
           className='btn btn-primary '
         />
       </div>

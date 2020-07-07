@@ -24,6 +24,7 @@ export default (state, action) => {
       return {
         ...state,
         contacts: [action.payload, ...state.contacts],
+        numOfContacts: state.numOfContacts + 1,
         loading: false,
       };
     case CLEAR_CONTACTS:
@@ -42,6 +43,7 @@ export default (state, action) => {
         contacts: [
           ...state.contacts.filter((contact) => contact._id !== action.payload),
         ],
+        numOfContacts: state.numOfContacts - 1,
       };
     case SET_CURRENT:
       return {

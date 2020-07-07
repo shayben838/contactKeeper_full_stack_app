@@ -11,7 +11,9 @@ const Contacts = () => {
     // eslint-disable-next-line
   }, []);
   if (!contacts && !loading) {
-    return <h4>Please add a contact</h4>;
+    if (!contacts || contacts === []) {
+      return <h4>Please add a company</h4>;
+    }
   }
   return (
     <div>

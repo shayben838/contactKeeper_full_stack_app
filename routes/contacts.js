@@ -11,10 +11,10 @@ const Contact = require("../models/Contacts");
 // @access  Private
 router.get("/", auth, async (req, res) => {
   try {
+    console.log(" @USER @ ", req.user.id);
     const contacts = await Contact.find({ user: req.user.id }).sort({
       date: -1,
     });
-
     res.status(200).json({ contacts });
   } catch (err) {
     console.error(err.message);
@@ -94,7 +94,7 @@ router.put("/:id", auth, async (req, res) => {
   const contactFields = {};
   if (name) contactFields.name = name;
   if (email) contactFields.email = email;
-  if (link) contactFields.phone = phone;
+  if (link) contactFields.link = link;
   if (type) contactFields.type = type;
   if (firstInterview) contactFields.firstInterview = firstInterview;
   if (!firstInterview) contactFields.firstInterview = "";
@@ -145,7 +145,7 @@ router.delete("/:id", auth, async (req, res) => {
     if (contact.user.toString() !== req.user.id) {
       return res.status(401).json({ msg: "Not autohrized" });
     }
-    await Contact.findOneAndRemove(req.params.id);
+    const check = await Contact.findByIdAndRemove(req.params.id);
     res.json({ msg: "Contact removed" });
   } catch (err) {
     console.error(err.message);

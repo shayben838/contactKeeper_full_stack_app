@@ -1,12 +1,12 @@
 .Info_component {
   overflow: auto;
-  position: absolute;
-  background-color: rgba(1, 1, 1, 0.9);
-  color: white;
-  top: 0px;
+  /* position: absolute; */
+  /* background-color: rgba(197, 197, 197, 0.9); */
+  color: black;
+  /* top: 0px;
   bottom: 0px;
   left: 0px;
-  right: 0px;
+  right: 0px; */
   padding-bottom: 200px;
 }
 .info {

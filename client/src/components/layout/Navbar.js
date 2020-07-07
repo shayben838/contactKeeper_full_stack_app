@@ -15,23 +15,34 @@ const Navbar = ({ title, icon }) => {
   };
   const authLinks = (
     <Fragment>
-      <li>
-        <Link to='/about'>About</Link>
+      <li style={{ borderRight: "1px solid white" }}>
+        <Link to='/'>
+          <i className='fas fa-home'></i>
+        </Link>
       </li>
-      <li>Hello {user && user.user.name}</li>
+      <li style={{ borderRight: "1px solid white" }}>
+        <Link to='/info'>
+          <i className='fas fa-info'></i>
+        </Link>
+      </li>
+      {/* <li style={{ borderRight: "1px solid white" }}>
+        <Link to='/about'>About</Link>
+      </li> */}
+      <li style={{ borderRight: "1px solid white" }}>
+        <Link to='/'> Hello {user && user.user.name}</Link>
+      </li>
       <li>
         <a onClick={onLogout} href='#!'>
-          <i className='fas fa-sign-out-alt'></i>
-          <span className='hide-sm'>Logout</span>
+          <span>Logout</span>
         </a>
       </li>
     </Fragment>
   );
   const guestLinks = (
     <Fragment>
-      <li>
+      {/* <li>
         <Link to='/about'>About</Link>
-      </li>
+      </li> */}
       <li>
         <Link to='/register'>Register</Link>
       </li>
@@ -44,8 +55,8 @@ const Navbar = ({ title, icon }) => {
   return (
     <div className='navbar bg-primary'>
       <h1>
-        <Link to='/'>
-          <i className={`${icon} p-1`} />
+        <Link to='/' className='main-icon'>
+          <i className={`${icon} p-1 main_icon`} />
           {title}
         </Link>
       </h1>
@@ -59,8 +70,7 @@ Navbar.propTypes = {
   icon: PropTypes.string,
 };
 Navbar.defaultProps = {
-  title: "Contact Keeper",
-  icon: "fas fa-id-card-alt",
+  title: "CV-Tracker",
+  icon: "far fa-eye",
 };
-
 export default Navbar;

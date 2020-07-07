@@ -1,12 +1,20 @@
 import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import ContactContext from "../../../context/contact/contactContext";
+import AuthContext from "../../../context/auth/authContext";
+
 import "./info.css";
 
 const Info = () => {
+  //  ???????????????????????????????
+  const authContext = useContext(AuthContext);
+  // ?????????????????????????????????
   const contactContext = useContext(ContactContext);
   const { contacts, loading } = contactContext;
   useEffect(() => {
+    //  ???????????????????????????????
+    authContext.loadUser();
+    //  ???????????????????????????????
     contactContext.getConacts();
     // eslint-disable-next-line
   }, []);
@@ -66,14 +74,16 @@ const Info = () => {
     <div className='Info_component '>
       {contacts !== null && !loading && (
         <div className='p-rel'>
-          <Link to='/'>
+          {/* <Link to='/'>
             <i className='fas fa-times times_info'></i>
-          </Link>
+          </Link> */}
 
-          <h1 className='text-center lead p-3 '>Information Center</h1>
+          <h1 className='text-center lead p-1 '>Information Center</h1>
           {/* information */}
           <div className='container grid-2'>
             <div>
+              <h2 className='m-1'>Numbers </h2>
+
               <div>
                 <i className='fas fa-info m-1'></i>
                 <span>
@@ -116,16 +126,11 @@ const Info = () => {
             <div>
               <div className='text-center '>
                 <h2 className='m-1'>Your CV send To </h2>
-                <div className='grid-3'>
+                <div className=' wrap_company_item'>
                   {companies.map((company) => {
                     return (
-                      <div id={`${company}`} key={`${company}`}>
-                        <p
-                          className={"company_item"}
-                          style={{ letterSpacing: "0.1rem" }}
-                        >
-                          {company}
-                        </p>
+                      <div key={`${company} `}>
+                        <p className={"company_item"}>{company}</p>
                       </div>
                     );
                   })}
@@ -147,6 +152,11 @@ const Info = () => {
                   </p>
                 );
               })}
+              {preservation.length === 0 && (
+                <h4 className='text-center'>
+                  Add preservation for your interviews.
+                </h4>
+              )}
             </div>
             <div>
               <h2 className='danger m-2'>Your Weaknesses</h2>
@@ -160,6 +170,11 @@ const Info = () => {
                   </p>
                 );
               })}
+              {improvement.length === 0 && (
+                <h4 className='text-center'>
+                  Add improvement for your interviews.
+                </h4>
+              )}
             </div>
           </div>
         </div>

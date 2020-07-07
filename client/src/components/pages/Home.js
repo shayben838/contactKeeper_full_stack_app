@@ -5,6 +5,7 @@ import Contacts from "../contacts/Contacts";
 import ContactForm from "../contacts/ContactForm";
 import ContactFilter from "../contacts/ContactFilter";
 import AuthContext from "../../context/auth/authContext";
+import Spinner from "../layout/Spiner";
 
 const Home = () => {
   const authContext = useContext(AuthContext);
@@ -14,16 +15,20 @@ const Home = () => {
   }, []);
   return (
     <Fragment>
-      <div className='grid-2' style={{ position: "relative" }}>
-        <ContactForm />
-        <div>
-          <ContactFilter />
-          <Contacts />
+      {authContext.loading ? (
+        <Spinner />
+      ) : (
+        <div className='grid-2' style={{ position: "relative" }}>
+          <ContactForm />
+          <div>
+            <ContactFilter />
+            <Contacts />
+          </div>
+          <Link to='/info'>
+            <i className='fas fa-info-circle info'></i>
+          </Link>
         </div>
-        <Link to='/info'>
-          <i className='fas fa-info-circle info'></i>
-        </Link>
-      </div>
+      )}
     </Fragment>
   );
 };
