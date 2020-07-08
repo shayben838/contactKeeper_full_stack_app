@@ -1,89 +1,46 @@
 import React, { useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
 import ContactContext from "../../../context/contact/contactContext";
 import AuthContext from "../../../context/auth/authContext";
-
+import { calculateNumbers } from "./statistics";
 import "./info.css";
 
 const Info = () => {
-  //  ???????????????????????????????
   const authContext = useContext(AuthContext);
-  // ?????????????????????????????????
   const contactContext = useContext(ContactContext);
   const { contacts, loading } = contactContext;
   useEffect(() => {
-    //  ???????????????????????????????
     authContext.loadUser();
-    //  ???????????????????????????????
     contactContext.getConacts();
     // eslint-disable-next-line
   }, []);
+  let dataStatistics = {
+    first: 0,
+    second: 0,
+    companies: [],
+    preservation: [],
+    improvement: [],
+  };
 
-  let interval;
-  let first = 0;
-  let second = 0;
-  let companies = [];
-  let preservation = [];
-  let improvement = [];
   if (contacts !== null && !loading) {
-    contacts.forEach((contact) => {
-      companies.push(contact.name);
-      if (contact.firstInterview) {
-        first += 1;
-      }
-      if (contact.conservationPoint_1) {
-        preservation.push(contact.conservationPoint_1);
-      }
-      if (contact.conservationPoint_2) {
-        preservation.push(contact.conservationPoint_2);
-      }
-      if (contact.pointToImprove_1) {
-        improvement.push(contact.pointToImprove_1);
-      }
-      if (contact.pointToImprove_2) {
-        improvement.push(contact.pointToImprove_2);
-      } else if (contact.secondInterview) {
-        second += 1;
-      }
-    });
+    dataStatistics = calculateNumbers(contacts, loading);
   }
-  if (contacts !== null && !loading) {
-    const colors = ["companyColor1", "companyColor2"];
-    let index = 0;
-    let indexColor = 0;
+  const {
+    first,
+    second,
+    companies,
+    preservation,
+    improvement,
+  } = dataStatistics;
 
-    interval = setInterval(function () {
-      if (index > companies.length - 1) {
-        index = 0;
-        indexColor += 1;
-      }
-      if (indexColor > colors.length - 1) {
-        indexColor = 0;
-      }
-
-      let myElement = document.getElementById(`${companies[index]}`);
-      if (myElement) {
-        myElement.className = `${colors[indexColor]}`;
-      }
-      console.log("live");
-      index += 1;
-    }, 1000);
-  }
-  console.log(interval);
   return (
     <div className='Info_component '>
       {contacts !== null && !loading && (
         <div className='p-rel'>
-          {/* <Link to='/'>
-            <i className='fas fa-times times_info'></i>
-          </Link> */}
-
           <h1 className='text-center lead p-1 '>Information Center</h1>
           {/* information */}
           <div className='container grid-2'>
             <div>
               <h2 className='m-1'>Numbers </h2>
-
               <div>
                 <i className='fas fa-info m-1'></i>
                 <span>
@@ -123,7 +80,7 @@ const Info = () => {
               </div>
             </div>
             {/* companies */}
-            <div>
+            <div style={{ maxHeight: "325px", overflow: "auto" }}>
               <div className='text-center '>
                 <h2 className='m-1'>Your CV send To </h2>
                 <div className=' wrap_company_item'>

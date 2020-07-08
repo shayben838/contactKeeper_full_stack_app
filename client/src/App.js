@@ -20,7 +20,8 @@ import Info from "./components/pages/info/Info";
 // לקצר את כל הקומפוננטות מעל 100 שורות
 // להוציא פונקציות שמחשבות מחוץ לקומפוננטות
 // loading
-
+// להוסיף היסטוריה שכל תזכיר שמוחקים נשמר בדאטה בס בhistory
+// בדף הבית כל יום שהמשתמש נכנס מוצג לו משימה יומית על פי החולשות שלו
 if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
