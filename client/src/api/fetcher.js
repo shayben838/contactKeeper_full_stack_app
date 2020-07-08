@@ -2,7 +2,6 @@ import axios from "axios";
 // Production
 const fetcher = axios.create({
   baseURL: "https://cv-tracker-v1.herokuapp.com",
-  // baseURL: "https://guarded-springs-33884.herokuapp.com",
   withCredentials: true,
 });
 

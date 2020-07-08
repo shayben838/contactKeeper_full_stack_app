@@ -26,7 +26,6 @@ app.use(
   cors({
     credentials: true,
     origin: "https://cv-tracker-v1.herokuapp.com",
-    // origin: "https://guarded-springs-33884.herokuapp.com",
   })
 );
 
