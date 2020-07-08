@@ -25,7 +25,8 @@ app.set("view engine", "pug");
 app.use(
   cors({
     credentials: true,
-    origin: "https://guarded-springs-33884.herokuapp.com",
+    origin: "https://cv-tracker-v1.herokuapp.com",
+    // origin: "https://guarded-springs-33884.herokuapp.com",
   })
 );
 
