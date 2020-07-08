@@ -6,13 +6,7 @@ const calculateNumbers = (contacts, loading) => {
     preservation: [],
     improvement: [],
   };
-  const {
-    first,
-    second,
-    companies,
-    preservation,
-    improvement,
-  } = dataStatistics;
+  const { companies, preservation, improvement } = dataStatistics;
   if (contacts !== null && !loading) {
     contacts.forEach((contact) => {
       companies.push(contact.name);

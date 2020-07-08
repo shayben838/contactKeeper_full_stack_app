@@ -22,7 +22,7 @@ const ContactForm = () => {
         pointToImprove_1: "",
         pointToImprove_2: "",
         link: "",
-        type: "personal",
+        type: "professional",
       });
     }
   }, [contactContext, current]);
@@ -39,7 +39,7 @@ const ContactForm = () => {
     pointToImprove_1: "",
     pointToImprove_2: "",
     link: "",
-    type: "personal",
+    type: "professional",
   });
 
   const onChange = (e) => {
@@ -66,7 +66,7 @@ const ContactForm = () => {
       pointToImprove_1: "",
       pointToImprove_2: "",
       link: "",
-      type: "personal",
+      type: "professional",
     });
   };
   const clearSingleState = (state) => {

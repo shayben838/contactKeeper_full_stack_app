@@ -4,20 +4,10 @@ const Contactconclusion = ({
   contact,
   setConclusion,
   conclusion,
-  setContact,
-  clearAll,
   clearSingleState,
-  onSubmit,
   onChange,
-  addContact,
-  updateContact,
-  current,
-  clearCurrent,
 }) => {
   const {
-    name,
-    email,
-    position,
     firstInterview,
     secondInterview,
     comments,
@@ -25,8 +15,6 @@ const Contactconclusion = ({
     conservationPoint_2,
     pointToImprove_1,
     pointToImprove_2,
-    link,
-    type,
   } = contact;
   return (
     <div>

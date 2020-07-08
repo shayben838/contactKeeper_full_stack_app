@@ -14,20 +14,7 @@ const ContactInner = ({
   current,
   clearCurrent,
 }) => {
-  const {
-    name,
-    email,
-    position,
-    firstInterview,
-    secondInterview,
-    comments,
-    conservationPoint_1,
-    conservationPoint_2,
-    pointToImprove_1,
-    pointToImprove_2,
-    link,
-    type,
-  } = contact;
+  const { name, email, position, link, type } = contact;
   return (
     <form id='contactForm' onSubmit={onSubmit}>
       <h2 className='text-primary '>{current ? "Edit Memo" : "Add Memo"}</h2>
@@ -76,7 +63,7 @@ const ContactInner = ({
         onChange={onChange}
       />
       {/* END */}
-      <h5>Contact Type</h5>
+      <h5>Memo Type</h5>
       <input
         type='radio'
         name='type'

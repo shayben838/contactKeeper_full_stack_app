@@ -68,7 +68,8 @@ const ContactItem = ({ contact }) => {
       <ul className='list'>
         {position && (
           <li>
-            <i className='fab fa-product-hunt'> </i>
+            {/* <i class="fas fa-hat-cowboy"></i> */}
+            <i className='fas fa-hat-cowboy'> </i>
             <span className='contact_item_text'>{position}</span>
           </li>
         )}

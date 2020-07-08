@@ -83,6 +83,7 @@ const ContactState = (props) => {
   };
   // Update Contact
   const updateContact = async (contact) => {
+    console.log(contact);
     const config = {
       headers: {
         "Content-Type": "application/json",

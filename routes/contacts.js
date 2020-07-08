@@ -79,6 +79,7 @@ router.post(
 router.put("/:id", auth, async (req, res) => {
   const {
     name,
+    position,
     email,
     firstInterview,
     secondInterview,
@@ -90,9 +91,24 @@ router.put("/:id", auth, async (req, res) => {
     link,
     type,
   } = req.body;
+  console.log(
+    name,
+    email,
+    position,
+    firstInterview,
+    secondInterview,
+    comments,
+    conservationPoint_1,
+    conservationPoint_2,
+    pointToImprove_1,
+    pointToImprove_2,
+    link,
+    type
+  );
   // Builde contact object
   const contactFields = {};
   if (name) contactFields.name = name;
+  if (position) contactFields.position = position;
   if (email) contactFields.email = email;
   if (link) contactFields.link = link;
   if (type) contactFields.type = type;

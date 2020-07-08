@@ -86,7 +86,7 @@ const Info = () => {
                 <div className=' wrap_company_item'>
                   {companies.map((company) => {
                     return (
-                      <div key={`${company} `}>
+                      <div key={`${company}${Math.random()} `}>
                         <p className={"company_item"}>{company}</p>
                       </div>
                     );
@@ -98,11 +98,11 @@ const Info = () => {
           {/* PROPS AND CONS */}
           <div className='container grid-2'>
             <div>
-              <h2 className='success m-2'>Your Strengths</h2>
+              <h2 className='success m-2'>Conservation points</h2>
               {preservation.map((pres) => {
                 return (
                   <p
-                    key={preservation.indexOf(pres)}
+                    key={`${preservation.indexOf(pres)}-A`}
                     className='p_PreservationAndImprovement_info success_border'
                   >
                     {pres}
@@ -116,7 +116,7 @@ const Info = () => {
               )}
             </div>
             <div>
-              <h2 className='danger m-2'>Your Weaknesses</h2>
+              <h2 className='danger m-2'>Improvement points</h2>
               {improvement.map((pres) => {
                 return (
                   <p
